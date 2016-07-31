@@ -30,8 +30,16 @@ public class SPlayerManager
 			FileConfiguration cfg = YamlConfiguration.loadConfiguration(f);
 			SPlayer sp = new SPlayer();
 			sp.loadFromConfig(cfg);
-			Bukkit.getConsoleSender().sendMessage("§8[§cLookup§8] Loaded player §e" + sp.getName());
 		}
+		for(Player p : Bukkit.getOnlinePlayers())
+		{
+			if(!userExist(p.getUniqueId()))
+			{
+				createPlayer(p);
+			}
+		}
+		
+		Bukkit.getConsoleSender().sendMessage("§8[§cLookup§8] §7Loaded §e" + players.size() + "§7 players");
 	}
 	
 	public static SPlayer getSPlayerByName(String username)
@@ -39,6 +47,18 @@ public class SPlayerManager
 		for(SPlayer sp : players)
 		{
 			if(sp.getName().equalsIgnoreCase(username))
+			{
+				return sp;
+			}
+		}
+		return null;
+	}
+	
+	public static SPlayer getSPlayerByUUID(UUID uuid)
+	{
+		for(SPlayer sp : players)
+		{
+			if(sp.getUuid().equals(uuid))
 			{
 				return sp;
 			}
