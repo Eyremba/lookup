@@ -39,7 +39,7 @@ public class SPlayerManager
 			}
 		}
 		
-		Bukkit.getConsoleSender().sendMessage("§8[§cLookup§8] §7Loaded §e" + players.size() + "§7 players");
+		Bukkit.getConsoleSender().sendMessage("§8[§cLookup§8] §7Loaded §e" + players.size() + "§7 users");
 	}
 	
 	public static SPlayer getSPlayerByName(String username)
