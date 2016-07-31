@@ -1,0 +1,7 @@
+name: Lookup
+author: Dunios
+version: 1.0
+main: me.Dunios.Lookup.Main
+
+commands:
+   lookup:
