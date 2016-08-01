@@ -56,7 +56,7 @@ public class LookupCommand implements CommandExecutor
 							sender.sendMessage(PREFIX + "Owned accounts");
 							for(SPlayer s : list)
 							{
-								sender.sendMessage(PREFIX + "  §8-§6" + s.getName());
+								sender.sendMessage(PREFIX + "  §8-§6 " + s.getName());
 							}
 						}
 						sender.sendMessage(PREFIX + "Online§8: §6" + sp.isOnline());
