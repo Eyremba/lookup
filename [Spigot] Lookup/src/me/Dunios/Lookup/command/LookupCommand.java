@@ -16,6 +16,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import me.Dunios.Lookup.Main;
 import me.Dunios.Lookup.SPlayer.SPlayer;
 import me.Dunios.Lookup.SPlayer.SPlayerManager;
+import ru.tehkode.permissions.PermissionGroup;
+import ru.tehkode.permissions.PermissionUser;
+import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class LookupCommand implements CommandExecutor
 {
@@ -37,6 +40,7 @@ public class LookupCommand implements CommandExecutor
 				new BukkitRunnable()
 				{
 					
+					@SuppressWarnings("deprecation")
 					@Override
 					public void run()
 					{
@@ -57,6 +61,17 @@ public class LookupCommand implements CommandExecutor
 							for(SPlayer s : list)
 							{
 								sender.sendMessage(PREFIX + "  §8-§6 " + s.getName());
+							}
+						}
+						if(Bukkit.getServer().getPluginManager().getPlugin("PermissionsEx") != null)
+						{
+							PermissionUser pu = PermissionsEx.getUser(sp.getName());
+							sender.sendMessage(PREFIX + "Ranks§8(PEX)");
+							PermissionGroup[] groups = pu.getGroups();
+							for(int i = 0; i < groups.length; i++)
+							{
+								PermissionGroup pg = groups[i];
+								sender.sendMessage(PREFIX + "  §8- " + pg.getPrefix().replaceAll("&", "§") + pg.getName());
 							}
 						}
 						sender.sendMessage(PREFIX + "Online§8: §6" + sp.isOnline());
