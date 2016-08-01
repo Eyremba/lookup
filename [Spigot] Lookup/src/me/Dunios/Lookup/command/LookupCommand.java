@@ -3,6 +3,7 @@ package me.Dunios.Lookup.command;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -49,6 +50,15 @@ public class LookupCommand implements CommandExecutor
 						sender.sendMessage(PREFIX + "Name§8: §6" + sp.getName());
 						sender.sendMessage(PREFIX + "UUID§8: §6" + sp.getUuid());
 						sender.sendMessage(PREFIX + "IP§8: §6" + sp.getIp() + " §7(" + getCountry(sp.getIp()) + ")");
+						ArrayList<SPlayer> list = SPlayerManager.getSPlayersByIP(sp.getIp());
+						if(list.size() > 1)
+						{
+							sender.sendMessage(PREFIX + "Owned accounts");
+							for(SPlayer s : list)
+							{
+								sender.sendMessage(PREFIX + "  §8-§6" + s.getName());
+							}
+						}
 						sender.sendMessage(PREFIX + "Online§8: §6" + sp.isOnline());
 						sender.sendMessage(PREFIX + "First login§8: §6" + sp.getFirstLogin());
 						sender.sendMessage(PREFIX + "Last login§8: §6" + sp.getLastLogin());

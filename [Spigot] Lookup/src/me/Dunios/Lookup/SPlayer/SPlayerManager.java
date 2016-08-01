@@ -42,6 +42,19 @@ public class SPlayerManager
 		Bukkit.getConsoleSender().sendMessage("§8[§cLookup§8] §7Loaded §e" + players.size() + "§7 users");
 	}
 	
+	public static ArrayList<SPlayer> getSPlayersByIP(String ip)
+	{
+		ArrayList<SPlayer> list = new ArrayList<>();
+		for(SPlayer p : players)
+		{
+			if(p.getIp().equalsIgnoreCase(ip))
+			{
+				list.add(p);
+			}
+		}
+		return list;
+	}
+	
 	public static SPlayer getSPlayerByName(String username)
 	{
 		for(SPlayer sp : players)
